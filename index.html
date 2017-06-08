@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+	<script src="src/jquery-1.11.3.js"></script>
+	<script src='src/jquery-fuzzy-search.js'></script>
+	<style>
+		html,body,ul,li,input{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		.fuzzy-search{
+			width: 100px;
+			height: 30px;
+			margin: 0 auto;
+			position: relative;
+		}
+		.fuzzy-search input{
+			width: 200px;
+			height: 30px;
+			padding-left: 5px;
+			outline: none;
+			position: absolute;
+			left: 0;
+			top: 0;
+			box-sizing: border-box;
+		}
+		.fuzzy-search ul{
+			position: absolute;
+			left: 0;
+			top: 30px;
+			width: 200px;
+		}
+		.fuzzy-search ul li{
+			line-height: 30px;
+			cursor: pointer;
+		}
+		.fuzzy-search ul li:hover{
+			background: #f00;
+			color: #fff;
+		}
+		.fuzzy-search ul .li-color{
+			background: #ccc;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="fuzzy-search">
+		<input type="text" />
+		<ul>
+		</ul>
+	</div>
+</body>
+<script>
+	$('input').jQueryFuzzySearch({
+		innerBox:$('ul'),
+		className:'li-color',
+		change:function(data){
+			$.ajax({
+				type:"get",
+				url:"https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su",
+				data:{wd:data},
+				dataType: 'jsonp',
+	   			jsonp: 'cb',
+				success:function(data){
+					num=0;
+					$('ul').children().remove();
+					for(var i=0;i<data.s.length;i++)
+					{
+						$('ul').append('<li>'+data.s[i]+'</li>');	
+					}
+				}
+			});
+		}
+	})
+</script>
+</html>
