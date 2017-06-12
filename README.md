@@ -32,7 +32,7 @@ $('input').jQueryFuzzySearch({
         });
     },
     returnId:function(data){
-        alert(data)
+        console.log(data)//选中返回值的id
     }
 })
 </script>
