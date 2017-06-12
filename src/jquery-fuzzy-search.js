@@ -47,6 +47,8 @@
                         return false;
                     }
                     else{
+                        innerBox.children().remove();
+                        num=0;
                         change($(this).val())
                     }
                     innerBox.on('click','li',function(){
