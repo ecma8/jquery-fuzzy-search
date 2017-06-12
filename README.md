@@ -28,6 +28,9 @@ $('input').jQueryFuzzySearch({
                 {
                     $('ul').append('<li>'+data.s[i]+'</li>');   
                 }
+            },
+            returnId:function(data){
+                alert(data)
             }
         });
     }
@@ -41,4 +44,4 @@ $('input').jQueryFuzzySearch({
     <ul>
     </ul>
 </div>
-```
+```banban123
