@@ -28,11 +28,11 @@ $('input').jQueryFuzzySearch({
                 {
                     $('ul').append('<li>'+data.s[i]+'</li>');   
                 }
-            },
-            returnId:function(data){
-                alert(data)
             }
         });
+    },
+    returnId:function(data){
+        alert(data)
     }
 })
 </script>
