@@ -49,7 +49,7 @@
 </head>
 <body>
 	<div class="fuzzy-search">
-		<input type="text" />
+		<input type="text" autocomplete="false" />
 		<ul>
 		</ul>
 	</div>
@@ -70,10 +70,13 @@
 					$('ul').children().remove();
 					for(var i=0;i<data.s.length;i++)
 					{
-						$('ul').append('<li>'+data.s[i]+'</li>');	
+						$('ul').append('<li data-id='+i+'>'+data.s[i]+'</li>');	
 					}
 				}
 			});
+		},
+		returnId:function(data){
+			console.log(data)
 		}
 	})
 </script>
