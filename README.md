@@ -44,4 +44,4 @@ $('input').jQueryFuzzySearch({
     <ul>
     </ul>
 </div>
-```banban123
+```
