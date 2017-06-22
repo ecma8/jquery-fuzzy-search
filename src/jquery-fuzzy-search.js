@@ -42,12 +42,12 @@
                         $(this).val($('.'+className).text());
                         $(this).attr('data-id',$('.'+className).attr('data-id'));
                         returnId($('.'+className).attr('data-id'))
-                        innerBox.children().remove();
                         num=0;
+                        innerBox.find('li').remove();
                         return false;
                     }
                     else{
-                        innerBox.children().remove();
+                        innerBox.find('li').remove();
                         num=0;
                         change($(this).val())
                     }
@@ -57,7 +57,7 @@
                         that.attr('data-id',$(this).attr('data-id'));
                         returnId($(this).attr('data-id'))
                         num=0;
-                        innerBox.children().remove();
+                        innerBox.find().remove();
                     })
                 });
             })  
