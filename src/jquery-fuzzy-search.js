@@ -17,7 +17,7 @@
                         $(this).attr('data-id',$('.'+className).attr('data-id'));
                         returnId($('.'+className).attr('data-id'))
                         num++;
-                        if(num>$('li').length-1)
+                        if(num>innerBox.find('li').length-1)
                         {
                             num=0;
                         }
@@ -33,7 +33,7 @@
                         returnId($('.'+className).attr('data-id'))
                         if(num<0)
                         {
-                            num=$('li').length-1;
+                            num=innerBox.find('li').length-1;
                         }
                         return false;
                     }
@@ -51,16 +51,15 @@
                         num=0;
                         change($(this).val())
                     }
-                    innerBox.on('click','li',function(){
-                    	console.log($(this).text())
-                        that.val($(this).text());
-                        that.attr('data-id',$(this).attr('data-id'));
-                        returnId($(this).attr('data-id'))
-                        num=0;
-                        innerBox.find().remove();
-                    })
                 });
+                innerBox.on('click','li',function(){
+                    that.val($(this).text());
+                    that.attr('data-id',$(this).attr('data-id'));
+                    returnId($(this).attr('data-id'));
+                    num=0;
+                    innerBox.find('li').remove();
+                })
             })  
         }
     }) 
-})(jQuery)    
+})(jQuery);
