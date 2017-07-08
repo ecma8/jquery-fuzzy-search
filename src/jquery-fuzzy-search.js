@@ -12,10 +12,10 @@
                     var keyCode=e.keyCode;
                     if(keyCode==40)
                     {
+                        e.preventDefault()
                         innerBox.find('li').eq(num).addClass(className).siblings().removeClass(className)
                         $(this).val($('.'+className).text());
                         $(this).attr('data-id',$('.'+className).attr('data-id'));
-                        returnId($('.'+className).attr('data-id'))
                         num++;
                         if(num>innerBox.find('li').length-1)
                         {
@@ -25,12 +25,11 @@
                     }
                     else if(keyCode==38)
                     {
-                        e.preventDefault()
+                        e.preventDefault();
                         num--;
                         innerBox.find('li').eq(num).addClass(className).siblings().removeClass(className)
                         $(this).val($('.'+className).text());
                         $(this).attr('data-id',$('.'+className).attr('data-id'));
-                        returnId($('.'+className).attr('data-id'))
                         if(num<0)
                         {
                             num=innerBox.find('li').length-1;
@@ -39,9 +38,15 @@
                     }
                     else if(keyCode==13)
                     {
+
+
                         $(this).val($('.'+className).text());
                         $(this).attr('data-id',$('.'+className).attr('data-id'));
-                        returnId($('.'+className).attr('data-id'))
+                        returnId({
+                            id:$('.'+className).attr('data-id'),
+                            text:$('.'+className).text(),
+                            time:$(this).attr('data-time')
+                        });
                         num=0;
                         innerBox.find('li').remove();
                         return false;
@@ -52,10 +57,15 @@
                         change($(this).val())
                     }
                 });
-                innerBox.on('click','li',function(){
+                innerBox.on('click','li',function(e){
+                    e.stopPropagation();
                     that.val($(this).text());
                     that.attr('data-id',$(this).attr('data-id'));
-                    returnId($(this).attr('data-id'));
+                    returnId({
+                        id:$(this).attr('data-id'),
+                        text:$(this).text(),
+                        time:$(this).attr('data-time')
+                    });
                     num=0;
                     innerBox.find('li').remove();
                 })
